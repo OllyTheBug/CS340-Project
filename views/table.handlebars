@@ -1,46 +1,60 @@
-<h1>Current Customers</h1>
+<h1>{{pagetitle}}</h1>
+
 {{> navbar}}
+
+<h1>{{table}}</h1>
+<h1>{{mockData.orders.length}}</h1>
+
+{{#each mockData.orders}}
+  <h2>{{Party}}</h2>
+{{/each}}
+
 <div class="container">
   <div class="table-wrapper">
     <div class="table-title">
       <div class="row">
         <div class="col-sm-8">
-          <h2>Customer <b>Details</b></h2>
         </div>
         <div class="col-sm-4">
-          <button type="button" class="btn btn-info add-new"><i class="fa fa-plus"></i> Add New</button>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#orderModal"><i class="fa fa-plus"></i> Add New</button>
         </div>
+        {{> searchBar}}
       </div>
-      {{> searchBar}}
+
     </div>
     <table id='myTable' class="table table-bordered">
       <thead>
         <tr>
-          <th>Last Name</th>
-          <th>Address</th>
-          <th>Address 2</th>
-          <th>Email</th>
-          <th>Action</th>
+          <th>Party</th>
+          <th>Showing</th>
+          <th>Room</th>
+          <th>Seat(s)</th>
+          <th>Order Status</th>
+          <th>Actions</th>
 
         </tr>
-      </thead>
+        </tdead>
       <tbody>
         <tr>
           <td>Marquette</td>
-          <td>4575 Prospect Valley Road</td>
-          <td>Apt 1</td>
-          <td>f_qMarq89@hotmail.com</td>
+          <td>Tenet</td>
+          <td>1 Room</td>
+          <td>17K, 18K</td>
+          <td class="status" contenteditable="false" id="sr1">Complete</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
           </td>
+
         </tr>
+
         <tr>
           <td>McKenzie</td>
-          <td>1294 Pickens Way</td>
-          <td>NA</td>
-          <td>VioletEMcKenzie@rhyta.com</td>
+          <td>Mortal Kombat</td>
+          <td>2 Room</td>
+          <td>15B</td>
+          <td class="status" contenteditable="false" id="sr2">Complete</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
@@ -49,15 +63,17 @@
         </tr>
         <tr>
           <td>Turner</td>
-          <td>4521 Riverside Drive</td>
-          <td>Apt 3</td>
-          <td>CharlesCTurner@jourrapide.com</td>
+          <td>Godzilla vs Kong</td>
+          <td>3 Room</td>
+          <td>24A</td>
+          <td class="status" contenteditable="false" id="sr3">Fail</td>
           <td>
             <a class="add" title="Add" data-toggle="tooltip"><i class="material-icons">&#xE03B;</i></a>
             <a class="edit" title="Edit" data-toggle="tooltip"><i class="material-icons">&#xE254;</i></a>
             <a class="delete" title="Delete" data-toggle="tooltip"><i class="material-icons">&#xE872;</i></a>
           </td>
         </tr>
+
       </tbody>
     </table>
   </div>

@@ -1,17 +1,21 @@
 var path = require('path');
 var express = require('express');
+var mysql = require('./dbcon.js')
 var exphbs = require('express-handlebars')
 var bodyParser = require('body-parser');
+var mockData = require('./mockData.json');
 
 var app = express();
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main', layoutsDir: path.join(__dirname, 'layouts') }));
 app.set('view engine', 'handlebars');
+app.set('mysql', mysql);
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 app.use(express.urlencoded({extended: false}));
 app.use(express.json());
+app.use(express.static('public'));
 
 PORT = 6559;                 // Set a port number at the top so it's easy to change in the future
 
@@ -25,7 +29,7 @@ app.get('/showings', function(req, res,next){    // This is the basic syntax for
 });
 
 app.get('/order', function(req, res,next){    // This is the basic syntax for what is called a 'route'
-  res.render('order', {active_order: true});
+  res.render('order', {active_order: true, table: 'Orders', mockData});
 });
 
 app.get('/ordershowings', function(req, res,next){    // This is the basic syntax for what is called a 'route'
